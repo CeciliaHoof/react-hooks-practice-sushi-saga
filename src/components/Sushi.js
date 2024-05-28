@@ -1,20 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-function Sushi(props) {
+function Sushi({ sushi, eat }) {
+  const { id, name, img_url, price } = sushi
+  
+  const [ eaten, setEaten ] = useState(false)
+
+  useEffect(() => {
+    sushi.eaten ? setEaten(true) : setEaten(false)
+  }, [sushi])
+
+  const eatSushi = () => {
+    setEaten(true)
+    fetch(`http://localhost:3001/sushis/${id}`,{
+      method: 'PATCH',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({eaten : true})
+    })
+    eat(sushi)
+  }
+
   return (
     <div className="sushi">
-      <div className="plate" onClick={/* Give me a callback! */ null}>
+      <div className="plate" onClick={eatSushi}>
         {/* Tell me if this sushi has been eaten! */}
-        {false ? null : (
+        {eaten ? null : (
           <img
-            src={/* Give me an image source! */ null}
-            alt={/* Give me a name! */ "Sushi"}
+            src={img_url}
+            alt={name}
             width="100%"
           />
         )}
       </div>
       <h4 className="sushi-details">
-        {/* Give me a name! */} - ${/* Give me a price! */}
+        {name} - ${price}
       </h4>
     </div>
   );

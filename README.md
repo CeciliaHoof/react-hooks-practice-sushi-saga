@@ -49,11 +49,11 @@ started! They will give you clues as to how and where to manage `state` and
 Inspectors will be coming by to check that our patented Sushi Saga conveyor belt
 is working properly! Oh no! They will be checking the following:
 
-1. The sushi list is properly received from the server and displayed in our app.
+1. The sushi list is properly received from the server and displayed in our app. ✅
 
-2. Only 4 sushi are rendered at a time.
+2. Only 4 sushi are rendered at a time. ✅
 
-3. Clicking the "More Sushi!" button shows the next set of 4 sushi in the list.
+3. Clicking the "More Sushi!" button shows the next set of 4 sushi in the list. ✅
    For this assignment, you don't have to be concerned about what happens when
    you reach the end of the sushi list.
 
@@ -75,7 +75,7 @@ If and only if you have time, you may work on the following:
 1. Sushi Wallet! Add a form for customers to add more money to their balance.
 2. Full rotation! When the end of the line of sushi is reached, the conveyor
    belt should start from the beginning. Sushi that have already been eaten
-   should remain eaten. It would be creepy if they reappeared!
+   should remain eaten. It would be creepy if they reappeared! ✅
 3. Anything else!
 
 **Note:** If at the end of the challenge you have achieved all the functionality
