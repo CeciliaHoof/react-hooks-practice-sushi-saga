@@ -4,19 +4,19 @@ import Sushi from "./Sushi";
 
 function SushiContainer({ sushi, eat, money }) {
   const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(4);
+  // const [end, setEnd] = useState(4);
   
   const sushiDisplay = sushi
-    .slice(start, end)
+    .slice(start, start + 4)
     .map((s) => <Sushi key={s.id} sushi={s} eat={eat} money={money}/>);
 
   const handleMoreClick = () => {
-    if (end === 100) {
+    if (start === 96) {
       setStart(0);
-      setEnd(4);
+      // setEnd(4);
     } else {
       setStart(start + 4);
-      setEnd(end + 4);
+      // setEnd(end + 4);
     }
   };
 

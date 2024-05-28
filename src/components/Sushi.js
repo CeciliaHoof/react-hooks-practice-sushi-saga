@@ -4,6 +4,7 @@ function Sushi({ sushi, eat, money }) {
   const { id, name, img_url, price } = sushi;
 
   const [eaten, setEaten] = useState(false);
+  const [selSushi, setSelSushi] = useState(sushi)
 
   useEffect(() => {
     sushi.eaten ? setEaten(true) : setEaten(false);
@@ -11,13 +12,14 @@ function Sushi({ sushi, eat, money }) {
 
   const eatSushi = () => {
     if (money >= price) {
+      setSelSushi({...sushi, eaten : true})
       setEaten(true);
       fetch(`http://localhost:3001/sushis/${sushi.id}`,{
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({eaten : true})
       })
-      eat(sushi);
+      eat(selSushi);
     }
   };
 
