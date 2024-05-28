@@ -1,31 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function Sushi({ sushi, spendMoney, moneyLeft, plateCount, addPlates }) {
-  const [isEaten, setIsEaten] = useState(false)
+function Sushi({ sushi, eat, money }) {
+  const { id, name, img_url, price } = sushi;
 
-  function eatSushi(){
-    if (moneyLeft >= sushi.price){
-      spendMoney(sushi)
-      setIsEaten(!isEaten)
-      const newPlateCount = [...plateCount, sushi]
-      addPlates(newPlateCount)
+  const [eaten, setEaten] = useState(false);
+
+  useEffect(() => {
+    sushi.eaten ? setEaten(true) : setEaten(false);
+  }, [sushi]);
+
+  const eatSushi = () => {
+    if (money >= price) {
+      setEaten(true);
+      fetch(`http://localhost:3001/sushis/${sushi.id}`,{
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({eaten : true})
+      })
+      eat(sushi);
     }
-  }
+  };
 
   return (
     <div className="sushi">
       <div className="plate" onClick={eatSushi}>
         {/* Tell me if this sushi has been eaten! */}
-        {isEaten ? null : (
-          <img
-            src={sushi.img_url}
-            alt={sushi.name}
-            width="100%"
-          />
-        )}
+        {eaten ? null : <img src={img_url} alt={name} width="100%" />}
       </div>
       <h4 className="sushi-details">
-        {sushi.name} - ${sushi.price}
+        {name} - ${price}
       </h4>
     </div>
   );
