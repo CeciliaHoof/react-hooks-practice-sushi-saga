@@ -55,10 +55,10 @@ is working properly! Oh no! They will be checking the following:
 
 3. Clicking the "More Sushi!" button shows the next set of 4 sushi in the list. ✅
    For this assignment, you don't have to be concerned about what happens when
-   you reach the end of the sushi list.
+   you reach the end of the sushi list. ✅
 
 4. Clicking a sushi on a plate will eat the sushi, causing it to be removed from
-   its plate and an empty plate to appear on the table.
+   its plate and an empty plate to appear on the table. ✅ 
 
 5. We need to make money! Whenever a sushi is eaten, customers should be
    automatically charged! Based on a budget decided by you, the developer, the

@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import MoreButton from "./MoreButton";
 import Sushi from "./Sushi";
 
-function SushiContainer({ sushi, eat }) {
+function SushiContainer({ sushi, eat, money }) {
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(4);
-
+  
   const sushiDisplay = sushi
     .slice(start, end)
-    .map((s) => <Sushi key={s.id} sushi={s} eat={eat}/>);
+    .map((s) => <Sushi key={s.id} sushi={s} eat={eat} money={money}/>);
 
   const handleMoreClick = () => {
     if (end === 100) {

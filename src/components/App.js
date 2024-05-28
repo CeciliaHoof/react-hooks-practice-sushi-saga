@@ -5,23 +5,31 @@ import Table from "./Table";
 const API = "http://localhost:3001/sushis";
 
 function App() {
-  const [ sushiList, setSushiList ] = useState([])
-  const [ sushiEaten, setSushiEaten ] = useState([])
+  const [sushiList, setSushiList] = useState([]);
+  const [sushiEaten, setSushiEaten] = useState([]);
+  const [budget, setBudget] = useState(100);
 
   useEffect(() => {
     fetch(API)
-      .then(r => r.json())
-      .then(d => setSushiList(d))
-  }, [])
+      .then((r) => r.json())
+      .then((d) => setSushiList(d));
+  }, []);
 
   const eatSushi = (sushi) => {
-    setSushiEaten([...sushiEaten, sushi])
-  }
+    if (budget >= sushi.price) {
+      
+      setSushiEaten([...sushiEaten, sushi]);
+      
+      setBudget(budget - sushi.price);
+    } else {
+      console.log("You need more funds!");
+    }
+  };
 
   return (
     <div className="app">
-      <SushiContainer sushi={sushiList} eat={eatSushi}/>
-      <Table plates={sushiEaten}/>
+      <SushiContainer sushi={sushiList} eat={eatSushi} money={budget}/>
+      <Table plates={sushiEaten} money={budget}/>
     </div>
   );
 }
