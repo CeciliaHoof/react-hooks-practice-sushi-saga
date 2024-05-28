@@ -63,10 +63,10 @@ is working properly! Oh no! They will be checking the following:
 5. We need to make money! Whenever a sushi is eaten, customers should be
    automatically charged! Based on a budget decided by you, the developer, the
    amount of money remaining should go down by the cost of the sushi that was
-   eaten. There is a spot to display this number in the `Table` component.
+   eaten. There is a spot to display this number in the `Table` component. ✅
 
 6. No free meals! Customers cannot eat any sushi that exceeds the amount of
-   money remaining in their balance.
+   money remaining in their balance. ✅
 
 ## Bonus
 

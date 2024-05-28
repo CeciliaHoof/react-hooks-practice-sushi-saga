@@ -17,9 +17,10 @@ function App() {
 
   const eatSushi = (sushi) => {
     if (budget >= sushi.price) {
-      
+      const updatedSushi = sushiList.filter(s => s.id !== sushi.id)
+      setSushiList([sushi, ...updatedSushi])
       setSushiEaten([...sushiEaten, sushi]);
-      
+
       setBudget(budget - sushi.price);
     } else {
       console.log("You need more funds!");
@@ -28,8 +29,8 @@ function App() {
 
   return (
     <div className="app">
-      <SushiContainer sushi={sushiList} eat={eatSushi} money={budget}/>
-      <Table plates={sushiEaten} money={budget}/>
+      <SushiContainer sushi={sushiList} eat={eatSushi} money={budget} />
+      <Table plates={sushiEaten} money={budget} />
     </div>
   );
 }
